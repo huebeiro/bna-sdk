@@ -50,10 +50,6 @@
         <meta-data
             android:name="com.ericsson.bna.application.key"
             android:value="com.ericsson.findfrete.asp"/>
-      <service
-            android:name="com.evernote.android.job.gcm.PlatformGcmService"
-            android:enabled="true"
-            tools:replace="android:enabled" />
     </config-file>
       
     <edit-config file="AndroidManifest.xml" target="/manifest" mode="merge">
