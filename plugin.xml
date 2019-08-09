@@ -52,10 +52,6 @@
             android:value="com.ericsson.findfrete.asp"/>
     </config-file>
       
-    <edit-config file="AndroidManifest.xml" target="/manifest" mode="override">
-        <manifest xmlns:tools="http://schemas.android.com/tools" />
-    </edit-config>
-
     <framework src="src/android/bnasdkcordova-build.gradle" custom="true" type="gradleReference"/>
     <resource-file src="src/android/bnasdk-release.aar" target="libs/bnasdk-release.aar"/>
   </platform>
