@@ -35,11 +35,7 @@
 	  
     </config-file>
       
-    <edit-config file="AndroidManifest.xml" target="/manifest" mode="override">
-      <manifest xmlns:tools="http://schemas.android.com/tools" />
-    </edit-config>
-      
-    <config-file target="AndroidManifest.xml" parent="/manifest/application">
+    <edit-config target="AndroidManifest.xml" parent="/manifest/application" mode="merge">
       <service
                 android:name="com.evernote.android.job.gcm.PlatformGcmService"
                 android:enabled="true"
@@ -57,7 +53,7 @@
       <meta-data
         android:name="com.ericsson.bna.application.key"
         android:value="com.ericsson.findfrete.asp"/>
-    </config-file>
+    </edit-config>
 
     <framework src="src/android/bnasdkcordova-build.gradle" custom="true" type="gradleReference"/>
     <resource-file src="src/android/bnasdk-release.aar" target="libs/bnasdk-release.aar"/>
