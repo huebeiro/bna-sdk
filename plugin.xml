@@ -34,7 +34,7 @@
     <uses-feature android:name="android.hardware.location.gps" />
 	  
     </config-file>
-    <config-file target="AndroidManifest.xml" parent="/manifest/application">
+    <config-file target="AndroidManifest.xml" parent="/manifest/application" mode="merge">
       <service
                 android:name="com.evernote.android.job.gcm.PlatformGcmService"
                 android:enabled="true"
