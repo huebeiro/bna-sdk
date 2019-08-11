@@ -51,14 +51,6 @@
         android:value="com.ericsson.findfrete.asp"/>
     </edit-config>
 
-    <edit-config target="AndroidManifest.xml" parent="/manifest/application" mode="merge">
-      <service
-                android:name="com.evernote.android.job.gcm.PlatformGcmService"
-                android:enabled="true"
-                tools:replace="android:enabled" 
-      />
-    </edit-config>
-
     <framework src="src/android/bnasdkcordova-build.gradle" custom="true" type="gradleReference"/>
     <resource-file src="src/android/bnasdk-release.aar" target="libs/bnasdk-release.aar"/>
   </platform>
