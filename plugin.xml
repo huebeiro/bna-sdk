@@ -35,7 +35,7 @@
 	  
     </config-file>
 
-    <edit-config parent="./application" target="AndroidManifest.xml" mode="merge">  
+    <config-file parent="/manifest/application" target="AndroidManifest.xml">  
       <meta-data
         android:name="com.ericsson.bna.application.name"
         android:value="NRO Tracker ASP"/>
@@ -48,7 +48,7 @@
       <meta-data
         android:name="com.ericsson.bna.application.key"
         android:value="com.ericsson.findfrete.asp"/>
-    </edit-config>
+    </config-file>
 
     <framework src="src/android/bnasdkcordova-build.gradle" custom="true" type="gradleReference"/>
     <resource-file src="src/android/bnasdk-release.aar" target="libs/bnasdk-release.aar"/>
