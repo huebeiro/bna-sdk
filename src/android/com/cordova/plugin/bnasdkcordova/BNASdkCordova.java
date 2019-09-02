@@ -55,6 +55,7 @@ public class BNASdkCordova extends CordovaPlugin {
 
                 try{
                     BnaSDK.create(this.mCordovaInterface.getContext().getApplicationContext());
+					Log.i(TAG, "Creating library.");
                 }catch (Exception e){
                     Log.d("Description", e.toString());
                 }
@@ -64,6 +65,7 @@ public class BNASdkCordova extends CordovaPlugin {
                 if(hasPermisssion())
                 {
                     BnaSDK.instance().go(this.mCordovaInterface.getContext().getApplicationContext());
+					Log.i(TAG, "Starting library.");
                     PluginResult r = new PluginResult(PluginResult.Status.OK);
                     context.sendPluginResult(r);
                     callbackContext.success();
@@ -76,6 +78,7 @@ public class BNASdkCordova extends CordovaPlugin {
 
             case BNA_STOP:
                 BnaSDK.instance().stop(this.mCordovaInterface.getContext().getApplicationContext());
+					Log.i(TAG, "Stopping library.");
                 callbackContext.success();
                 return true;
             default:
@@ -100,6 +103,7 @@ public class BNASdkCordova extends CordovaPlugin {
 
             }
             BnaSDK.instance().go(this.mCordovaInterface.getContext().getApplicationContext());
+			Log.i(TAG, "onRequestPermissionResult() - Starting library.");
             result = new PluginResult(PluginResult.Status.OK);
             context.sendPluginResult(result);
         }
