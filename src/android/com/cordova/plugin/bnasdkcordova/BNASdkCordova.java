@@ -47,29 +47,27 @@ public class BNASdkCordova extends CordovaPlugin {
         this.mCordovaInterface = cordova;
     }
 
-    @Override
+   @Override
     public boolean execute(String action, CordovaArgs args, CallbackContext callbackContext) throws JSONException {
         
         switch (action) {
             case BNA_GO:
 
-                try{
-                    BnaSDK.create(this.mCordovaInterface.getContext().getApplicationContext());
-					Log.i(TAG, "Creating library.");
-                }catch (Exception e){
-                    Log.d("Description", e.toString());
-                }
-
                 LOG.d(TAG, "We are entering execute");
                 context = callbackContext;
                 if(hasPermisssion())
                 {
-                    BnaSDK.instance().go(this.mCordovaInterface.getContext().getApplicationContext());
-					Log.i(TAG, "Starting library.");
-                    PluginResult r = new PluginResult(PluginResult.Status.OK);
-                    context.sendPluginResult(r);
-                    callbackContext.success();
-                    return true;
+                    try{
+                        BnaSDK.create(this.mCordovaInterface.getContext().getApplicationContext());
+                        BnaSDK.instance().go(this.mCordovaInterface.getContext().getApplicationContext());
+                        PluginResult r = new PluginResult(PluginResult.Status.OK);
+                        context.sendPluginResult(r);
+                        callbackContext.success();
+                        return true;
+                    }catch (Exception e){
+                        Log.d("Description", e.toString());
+                        return false;
+                    }
                 }
                 else {
                     PermissionHelper.requestPermissions(this, 0, permissions);
@@ -78,7 +76,6 @@ public class BNASdkCordova extends CordovaPlugin {
 
             case BNA_STOP:
                 BnaSDK.instance().stop(this.mCordovaInterface.getContext().getApplicationContext());
-					Log.i(TAG, "Stopping library.");
                 callbackContext.success();
                 return true;
             default:
@@ -102,10 +99,15 @@ public class BNASdkCordova extends CordovaPlugin {
                 }
 
             }
-            BnaSDK.instance().go(this.mCordovaInterface.getContext().getApplicationContext());
-			Log.i(TAG, "onRequestPermissionResult() - Starting library.");
-            result = new PluginResult(PluginResult.Status.OK);
-            context.sendPluginResult(result);
+
+            try{
+                BnaSDK.create(this.mCordovaInterface.getContext().getApplicationContext());
+                BnaSDK.instance().go(this.mCordovaInterface.getContext().getApplicationContext());
+                PluginResult r = new PluginResult(PluginResult.Status.OK);
+                 context.sendPluginResult(r);
+            }catch (Exception e){
+                Log.d("Description", e.toString());
+            }
         }
     }
 
